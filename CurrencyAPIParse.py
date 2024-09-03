@@ -27,11 +27,11 @@ class CurrencyAPIParse:
                     if 'GEL' not in currency_dict:
                         currency_dict['GEL'] = 1.00
 
-            print(f"Currency Dictionary: {currency_dict}")
+
 
             normalized_rates = self.normalize_rates(currency_dict)
-
-            return normalized_rates
+            print(type(normalized_rates))
+            return currency_dict
         else:
             raise Exception("Failed to fetch data from API")
 

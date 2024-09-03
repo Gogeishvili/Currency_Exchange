@@ -3,8 +3,9 @@ from tkinter import ttk
 
 
 class CurrencyExchangeApp:
-    def __init__(self, converter, height, width):
+    def __init__(self, converter, currency_data,height, width):
         self.__converter = converter
+        self.__curreny_data=currency_data
 
         self.__root = tk.Tk()
         self.__currency_1 = tk.StringVar(value="GEL")
@@ -34,13 +35,13 @@ class CurrencyExchangeApp:
         label_currency1 = tk.Label(self.__root, text="From:")
         label_currency1.grid(row=0, column=0, padx=10, pady=10)
         dropdown_currency_1 = tk.ttk.Combobox(self.__root, textvariable=self.__currency_1,
-                                              values=list(self.__converter.currency_rates.keys()))
+                                              values=list(self.__curreny_data.keys()))
         dropdown_currency_1.grid(row=0, column=1, padx=10, pady=10)
 
         label_currency2 = tk.Label(self.__root, text="To:")
         label_currency2.grid(row=1, column=0, padx=10, pady=10)
         dropdown_currency2 = tk.ttk.Combobox(self.__root, textvariable=self.__currency_2,
-                                             values=list(self.__converter.currency_rates.keys()))
+                                             values=list(self.__curreny_data.keys()))
         dropdown_currency2.grid(row=1, column=1, padx=10, pady=10)
 
         label_amount = tk.Label(self.__root, text="Amount:")
