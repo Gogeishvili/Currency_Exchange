@@ -1,12 +1,11 @@
 import requests
 
-
 class CurrencyAPIParse:
     def __init__(self):
-        self.api_url = 'https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json/?currencies=RUB&currencies=USD&currencies=EUR&date=2024-09-03'
+        self.__api_url = 'https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json/?currencies=RUB&currencies=USD&currencies=EUR&date=2024-09-03'
 
     def load_currency_data(self):
-        response = requests.get(self.api_url)
+        response = requests.get(self.__api_url)
 
         if response.status_code == 200:
             data = response.json()
@@ -27,18 +26,7 @@ class CurrencyAPIParse:
                     if 'GEL' not in currency_dict:
                         currency_dict['GEL'] = 1.00
 
-
-
-            normalized_rates = self.normalize_rates(currency_dict)
-            print(type(normalized_rates))
             return currency_dict
         else:
             raise Exception("Failed to fetch data from API")
 
-
-
-
-    def normalize_rates(self, rates):
-        base_rate = rates.get('GEL', 1.00)
-        normalized_rates = {code: base_rate / rate for code, rate in rates.items()}
-        return normalized_rates
