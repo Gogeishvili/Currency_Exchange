@@ -35,6 +35,9 @@ class CurrencyAPIParse:
         else:
             raise Exception("Failed to fetch data from API")
 
+
+
+
     def normalize_rates(self, rates):
         base_rate = rates.get('GEL', 1.00)
         normalized_rates = {code: base_rate / rate for code, rate in rates.items()}
