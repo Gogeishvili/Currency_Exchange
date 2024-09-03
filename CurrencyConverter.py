@@ -1,6 +1,8 @@
+
 class CurrencyConverter:
-    def __init__(self):
-        self.__currency_rates = self.load_currency_data()
+    def __init__(self,api):
+        self.__currency_rates = api.load_currency_data()
+        print(self.__currency_rates)
 
     @property
     def currency_rates(self):
